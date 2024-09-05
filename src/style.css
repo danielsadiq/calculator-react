@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+
+:root {
+    --theme-1: hsl(6, 63%, 50%);
+
+    --main-bg: hsl(222, 26%, 31%);
+    --toggle-bg: hsl(223, 31%, 20%);
+    --screen-bg: hsl(224, 36%, 15%);
+    --key-bg: hsl(30, 25%, 89%);
+    --shadow-bg: hsl(28, 16%, 65%);
+
+    --del-bg: hsl(225, 21%, 49%);
+    --del-shadow-bg: hsl(221, 14%, 31%);
+
+    --equal-bg: hsl(6, 63%, 50%);
+    --equal-shadow-bg: hsl(6, 70%, 34%);
+
+    --head-text: white;
+
+    --toggle-size: 25px;
+  }
+
+.theme-2{
+  --main-bg: hsl(0, 0%, 90%);
+  --toggle-bg: hsl(0, 5%, 81%);
+  --screen-bg: hsl(0, 0%, 100%);
+
+  --key-bg: hsl(45, 7%, 89%);
+  --shadow-bg: hsl(35, 11%, 61%);
+
+  --del-bg: hsl(185, 42%, 37%);
+  --del-shadow-bg: hsl(185, 58%, 25%);
+
+  --equal-bg: hsl(25, 98%, 40%);
+  --equal-shadow-bg: hsl(25, 99%, 27%);
+
+  --head-text: hsl(60, 10%, 19%);
+
+  --toggle-size: 25px;
+}
+
+.theme-3{
+  --main-bg: hsl(268, 75%, 9%);
+  --toggle-bg: hsl(268, 71%, 12%);
+  --screen-bg:  hsl(268, 71%, 12%);
+
+  --key-bg: hsl(281, 89%, 26%);
+  --shadow-bg: hsl(285, 91%, 52%);
+
+  --del-bg: hsl(268, 47%, 21%);
+  --del-shadow-bg: hsl(185, 58%, 25%);
+
+  --equal-bg: hsl(176, 100%, 44%);
+  --equal-shadow-bg: hsl(25, 99%, 27%);
+
+  --head-text: hsl(52, 100%, 62%);
+  --button-text: hsl(52, 100%, 62%);
+
+  --toggle-size: 25px;
+}
+
+*, ::before, ::after{
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  transition: background-color 0.3s;
+}
+body{
+  margin: 0%;
+}
+#root{
+    width: 100%;
+    font-family: "League Spartan", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    background-color: var(--main-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content{
+    margin: 30px auto;
+    width: 40%;
+}
+header {
+    display: flex;
+    color: var(--head-text);
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    margin: 20px 0;
+}
+header > h1{
+    font-size: 2.5rem;
+}
+header > p{
+    text-transform: uppercase;
+    flex: 1;
+    text-align: right;
+    margin-right: 1.5rem;
+}
+.theme-box{
+    display: flex;
+    position: relative;
+    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.numbers{
+    display: flex;
+    position: absolute;
+    width: 90%;
+    justify-content: space-between;
+    top: -20px;
+}
+
+
+
+.input-box{
+    max-width: 100%;
+    height: 100px;
+    background-color: var(--screen-bg);
+    border-radius: 12px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 15px;
+}
+.input-box > h1{
+    color: var(--head-text);
+    font-size: 3rem;
+}
+
+.button-box{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 100%;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: var(--toggle-bg);
+    border-radius: 12px;
+}
+
+/* .button-box > button{ */
+button{
+    /* font-size: 32px; */
+    font-size: 2.1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    width: 100%;
+    /* aspect-ratio: 16 / 9; */
+    height: 60px;
+    padding: 7px 0;
+    border-width: 0 0 3px;
+    background-color: var(--key-bg);
+    border-color: var(--shadow-bg);
+    
+    color: var(--button-text);
+    cursor: pointer;
+    /* transition: 0.3s; */
+}
+button:hover{
+    background-color: white;
+}
+.del, .reset {
+    background-color: var(--del-bg);
+    border-color: var(--del-shadow-bg);
+    color: white;
+}
+.del:hover, .reset:hover{
+    background-color: #B0C4DE;
+}
+.equal{
+    background-color: var(--equal-bg);
+    color: white;
+    border-color: var(--equal-shadow-bg);
+}
+.equal:hover{
+    background-color: #FA8072;
+}
+.span-2{
+    grid-column: span 2;
+}
+
+@media screen and (max-width: 768px) {
+    .content{
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .content{
+        width: 95%;
+    }
+}
+
+
+
+
+
+.switch {
+    position: relative;
+    height: calc(var(--toggle-size) + 10px);
+    width: calc(var(--toggle-size)*3 + 10px);
+    background: #D7D7D7;
+    border-radius: var(--toggle-size);
+    transition: all 0.3s;
+  }
+
+  .switch-label {
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: var(--toggle-size);
+    line-height: var(--toggle-size);
+    font-size: 30px;
+    color: #676a6c;
+    text-align: center;
+    top: 5px;
+    margin-left: 3px;
+    cursor: pointer;
+
+    opacity: 0;
+  }
+  
+  .switch-input {
+    display: none;
+  }
+
+
+  .switch-input:checked + .switch-label-y ~ .switch-selector {
+    transform: translateX(0%);
+    background-color: hsl(6, 63%, 50%);
+  }
+  .switch-input:checked + .switch-label-i ~ .switch-selector {
+    transform: translateX(100%);
+    background-color: hsl(25, 98%, 40%);
+  }
+  .switch-input:checked + .switch-label-n ~ .switch-selector {
+    transform: translateX(200%);
+    background-color: hsl(176, 100%, 44%);
+  }
+
+
+
+
+  .switch:has(> .switch-input:checked + .switch-label-y ){
+    background-color: var(--toggle-bg);
+  }
+  .switch:has(> .switch-input:checked + .switch-label-i ){
+    background-color: hsl(0, 5%, 81%);
+  }
+  .switch:has(> .switch-input:checked + .switch-label-n ){
+    background-color: hsl(268, 71%, 12%);
+  }
+
+  
+  .switch-selector {
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    left: 5px;
+    display: block;
+    width: var(--toggle-size);
+    height: var(--toggle-size);
+    border-radius: var(--toggle-size);
+    transition: all 0.3s;
+  }
