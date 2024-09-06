@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { btnArr } from "./btnArr";
 
 const math_it_up = {
     '+': function (x, y) { return x + y },
     '-': function (x, y) { return x - y },
 	"x": function (x, y) { return x * y},
+	"*": function (x, y) { return x * y},
 	"/": function (x, y) { return Number.isInteger(x / y) ? x/y : 
 		Math.round(((x/y)+ Number.EPSILON) * 1000)/1000},
 
@@ -13,7 +14,6 @@ const math_it_up = {
 
 export default function App() {
     const [theme, setTheme] = useState(1);
-    console.log('render-x');
     document.documentElement.classList = "";
     document.documentElement.classList.add(`theme-${theme}`);
     
@@ -87,7 +87,7 @@ function Main() {
             setActive(0);
             setTrans(false);
         }
-		if(active.length < 9 || active === 0){
+		if(active.length < 9 || active === 0 || trans){
             setActive(active => {
 			if (active === 0) return "" + num
 			return "" + active + num;
@@ -99,6 +99,7 @@ function Main() {
 
     function handleOperand(oper){
         setPrevious(Number(active));
+        console.log(active);
         setOperand(oper);
         setTrans(true);
     };
@@ -118,6 +119,29 @@ function Main() {
         setOperand("");
         setTrans(false);
     }
+
+    useEffect(function(){
+        function callback(e) {
+            if (Number(e.key)|| Number(e.key)===0){
+                handleClick(e.key);
+            }
+            if (["+", "-", "/", "*"].includes(e.key)){
+                handleOperand(e.key);
+            }
+            if (e.key === "Enter"){
+                handleEqual();
+            }
+            if (e.key === "Delete" || e.key === "Backspace"){
+                handleDel();
+            }
+
+        }
+        document.addEventListener("keydown", callback)
+
+        return () => {
+            document.removeEventListener("keydown", callback)
+        }
+    },[handleClick, handleOperand, handleEqual, handleDel])
 
     return (
         <div className="main">
@@ -141,7 +165,9 @@ function Main() {
 
 
 function Button({btn, onClickBtn, onClickOper, onDel}){
-	return <button value={btn.char} onClick={() => 
+    
+    return <button value={btn.char} onClick={() => 
         btn.oper ? onClickOper(btn.char) : btn.special ? onDel() : onClickBtn(btn.char)
     }>{btn.char}</button>
+   
 }
