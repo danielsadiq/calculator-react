@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
 import { btnArr } from "./btnArr";
 
 const math_it_up = {
@@ -14,6 +14,7 @@ const math_it_up = {
 
 export default function App() {
     const [theme, setTheme] = useState(1);
+    const [state, dispatch] = useReducer(reducer, initialItems);
     document.documentElement.classList = "";
     document.documentElement.classList.add(`theme-${theme}`);
     
