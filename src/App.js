@@ -1,5 +1,7 @@
 import { useEffect, useState, useReducer } from "react";
 import { btnArr } from "./btnArr";
+import Header from "./components/HeaderBox";
+import ThemeInput from './components/ThemeInput';
 
 const math_it_up = {
     '+': function (x, y) { return x + y },
@@ -14,7 +16,7 @@ const math_it_up = {
 
 export default function App() {
     const [theme, setTheme] = useState(1);
-    const [state, dispatch] = useReducer(reducer, initialItems);
+    // const [state, dispatch] = useReducer(reducer, initialItems);
     document.documentElement.classList = "";
     document.documentElement.classList.add(`theme-${theme}`);
     
@@ -31,50 +33,7 @@ export default function App() {
     );
 }
 
-function Header({children}) {
-    
-    return (
-        <header>
-            <h1>calc</h1>
-            <p>theme</p>
-            <div className="theme-box">
-                <div className="numbers">
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                </div>
-                <div className="switch">
-                    {children}
-                    <span className="switch-selector"></span>
-                </div>
-            </div>
-        </header>
-    );
-}
 
-function ThemeInput({ name, theme, setTheme }) {
-	let val = name === "y" ? 1 : name === "i" ? 2 : 3;
-	
-    return (
-        <>
-            <input
-                id={`switch-${name}`}
-                name="tripple"
-                type="radio"
-                value={name}
-                className="switch-input"
-                onChange={() => setTheme(val)}
-                checked={val === theme}
-            />
-            <label
-                htmlFor={`switch-${name}`}
-                className={`switch-label switch-label-${name}`}
-            >
-                val
-            </label>
-        </>
-    );
-}
 
 
 function Main() {

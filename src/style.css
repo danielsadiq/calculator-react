@@ -73,6 +73,7 @@ body{
     font-weight: 700;
     font-style: normal;
     background-color: var(--main-bg);
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -185,7 +186,7 @@ button:hover{
 
 @media screen and (max-width: 768px) {
     .content{
-        width: 65%;
+        width: 55%;
     }
 }
 
