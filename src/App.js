@@ -79,6 +79,14 @@ export default function App() {
     );
 }
 
+function formatCurrency(value) {
+    return new Intl.NumberFormat().format(value);
+}
+
+console.log((formatCurrency(3500)));
+
+
+
 function Main({ state, dispatch }) {
 
     function handleClick(num){
@@ -89,7 +97,7 @@ function Main({ state, dispatch }) {
     return (
         <div className="main">
             <div className="input-box">
-                <h1 id="value">{state.active}</h1>
+                <h1 id="value">{formatCurrency(state.active)}</h1>
             </div>
             <div className="button-box">
                 {btnArr.map((x) => (
